@@ -3,9 +3,11 @@
     flex-direction: column;
     gap: 8px;
     padding: 32px;
+    border-bottom: 1px solid rgb(229, 230, 234);
 }
 
 .headerTitle{
+    color: var(--primary-text-color);
     font-size: 36px;
     line-height: 40px;
     font-weight: 700;
