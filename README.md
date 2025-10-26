@@ -52,7 +52,7 @@ npm install
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+5. Open your browser and navigate to `http://localhost:5173`
 
 ### Available Scripts
 
@@ -65,6 +65,8 @@ npm run dev
 
 ```
 src/
+├── api/                 # API layer
+│   └── api.ts           # API functions and hooks
 ├── components/          # Reusable UI components
 │   ├── CategoriesList/  # Category selection component
 │   ├── Statistics/      # Main statistics container
@@ -91,13 +93,36 @@ The application integrates with the [Open Trivia Database API](https://opentdb.c
 - Different difficulty levels (easy, medium, hard)
 - Various question types (multiple choice, true/false)
 
+### Environment Configuration
+
+The application uses environment variables for API configuration:
+
+- `VITE_BASE_URL`: Base URL for the Open Trivia Database API
+
+### API Layer
+
+The `src/api/api.ts` file contains:
+- `useFetchQuestions(categoryId?)`: Fetches trivia questions (50 questions, optionally filtered by category)
+- `useFetchCategories()`: Fetches available trivia categories
+
+Both functions use the custom `useFetch` hook with built-in retry logic and error handling.
+
 ## Key Components
+
+### API Layer (`src/api/api.ts`)
+
+Centralized API functions that handle all external data fetching:
+
+- **`useFetchQuestions(categoryId?)`**: Fetches 50 trivia questions, optionally filtered by category
+- **`useFetchCategories()`**: Fetches the list of available trivia categories
+- Uses environment variables for flexible API endpoint configuration
+- Built on top of the custom `useFetch` hook for consistent error handling
 
 ### Statistics Component
 
 The main component that orchestrates data fetching and visualization. It:
 
-- Fetches 50 questions from the API
+- Uses the API layer to fetch questions and categories
 - Groups data by difficulty, type, and category
 - Renders appropriate charts based on the selected category
 
@@ -134,6 +159,41 @@ The application includes comprehensive error handling:
 - API rate limit handling with exponential backoff
 - User-friendly error messages
 - Graceful fallbacks for missing data
+
+## Deployment
+
+### Environment Variables
+
+For production deployment, ensure the following environment variable is set:
+
+- `VITE_BASE_URL`: The base URL for the Open Trivia Database API
+
+The application will use the default value `https://opentdb.com/` if the environment variable is not set.
+
+#### Deployment Platforms
+
+**Netlify:**
+1. Go to Site settings → Environment variables
+2. Add `VITE_BASE_URL` with value `https://opentdb.com/`
+
+**Vercel:**
+1. Go to Project settings → Environment Variables
+2. Add `VITE_BASE_URL` with value `https://opentdb.com/`
+
+**Heroku:**
+```bash
+heroku config:set VITE_BASE_URL=https://opentdb.com/
+```
+
+### Build Process
+
+The application uses Vite for building:
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` directory.
 
 ## Contributing
 
