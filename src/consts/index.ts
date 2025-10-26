@@ -1,4 +1,4 @@
-export const ALL_CATEGORIES_ID = 0
+export const ALL_CATEGORIES_ID = 0;
 
 export const CATEGORY_COLORS = {
   bar: "#1f2937",
@@ -11,6 +11,6 @@ export const DIFFICULTY_COLORS = {
 };
 
 export const TYPE_COLORS = {
-    boolean: "#4f46e5",
-    multiple: "#10b981",
-}
+  boolean: "#4f46e5",
+  multiple: "#10b981",
+};

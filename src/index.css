@@ -10,11 +10,12 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
-:root{
+:root {
   --primary-text-color: rgb(17, 24, 39);
   --secondary-text-color: rgb(75, 85, 99);
   --hover-text-color: rgb(255, 255, 255);

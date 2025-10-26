@@ -17,7 +17,7 @@ const DistributionByCategory: React.FC<DistributionByProps> = ({ data }) => {
     return <p className={styles.noData}>No data available</p>;
   }
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div className={styles.container}>
@@ -42,7 +42,11 @@ const DistributionByCategory: React.FC<DistributionByProps> = ({ data }) => {
             }}
             cursor={{ fill: "#f3f4f6" }}
           />
-          <Bar dataKey="value" fill={CATEGORY_COLORS.bar} radius={[8, 8, 0, 0]} />
+          <Bar
+            dataKey="value"
+            fill={CATEGORY_COLORS.bar}
+            radius={[8, 8, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

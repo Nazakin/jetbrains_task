@@ -41,7 +41,11 @@ const DistributionByType: React.FC<DistributionByProps> = ({ data }) => {
               key={d.name}
               dataKey={d.name}
               stackId="a"
-              fill={d.name === "Multiple Answers" ? TYPE_COLORS.multiple : TYPE_COLORS.boolean}
+              fill={
+                d.name === "Multiple Answers"
+                  ? TYPE_COLORS.multiple
+                  : TYPE_COLORS.boolean
+              }
             />
           ))}
         </BarChart>

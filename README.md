@@ -34,17 +34,20 @@ A React application that provides interactive statistics and visualizations for 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd jetbrains_task
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -91,20 +94,26 @@ The application integrates with the [Open Trivia Database API](https://opentdb.c
 ## Key Components
 
 ### Statistics Component
+
 The main component that orchestrates data fetching and visualization. It:
+
 - Fetches 50 questions from the API
 - Groups data by difficulty, type, and category
 - Renders appropriate charts based on the selected category
 
 ### useFetch Hook
+
 A custom hook that handles API requests with:
+
 - Loading states
 - Error handling
 - Automatic retry logic for rate limiting (429 errors)
 - Cleanup to prevent memory leaks
 
 ### Distribution Components
+
 Three specialized chart components using Recharts:
+
 - `DistributionByDifficulty`: Bar chart showing question distribution by difficulty
 - `DistributionByType`: Bar chart showing question distribution by type
 - `DistributionByCategory`: Bar chart showing question distribution by category
@@ -112,6 +121,7 @@ Three specialized chart components using Recharts:
 ## Styling
 
 The application uses CSS Modules for component-scoped styling, ensuring:
+
 - No style conflicts
 - Better maintainability
 - Improved performance
@@ -119,6 +129,7 @@ The application uses CSS Modules for component-scoped styling, ensuring:
 ## Error Handling
 
 The application includes comprehensive error handling:
+
 - Network error recovery
 - API rate limit handling with exponential backoff
 - User-friendly error messages

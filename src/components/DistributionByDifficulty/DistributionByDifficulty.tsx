@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-} from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
-import { DIFFICULTY_COLORS } from "../../consts/index"
+import { DIFFICULTY_COLORS } from "../../consts/index";
 import styles from "./DistributionByDifficulty.module.css";
 import { DistributionByProps } from "../../types";
 
