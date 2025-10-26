@@ -1,0 +1,17 @@
+.container {
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 15px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  margin: 0;
+}

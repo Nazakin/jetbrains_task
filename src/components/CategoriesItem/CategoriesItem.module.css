@@ -1,9 +1,9 @@
-.CategoriesItemContainer{
-    padding: 8px 16px;
+.selectedItem{
+        padding: 8px 16px;
     height: 40px;
-    background-color: var(--background-color);
-    color: var(--primary-background-color);
-    border: 1px solid var(--border-color);
+    background-color: var(--hover-background-color);
+    color: var(--hover-text-color);
+    border: 1px solid transparent;
     font-size: 14px;
     line-height: 20px;
     font-weight: 500;
@@ -11,11 +11,4 @@
     max-width: fit-content;
     white-space: nowrap;
     cursor: pointer;
-}
-
-.CategoriesItemContainer:hover,
-.selectedItem{
-    background-color: var(--hover-background-color);
-    color: var(--hover-text-color);
-    border-color: transparent;
 }

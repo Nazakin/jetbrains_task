@@ -1,0 +1,27 @@
+.container {
+  display: grid;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.chartContainer {
+  width: 100%;
+  height: 300px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  background-color: var(--background-color);
+}
+
+.chartTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.message {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-color-secondary);
+}
