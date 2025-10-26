@@ -11,19 +11,27 @@ export const useFetch = <T>(url: string) => {
 
     const fetchData = async () => {
       setLoading(true);
-      try {
-        const response = await axios.get<T>(url);
-        if (isMounted) {
+      let attempts = 0;
+
+      while (attempts < 3) {
+        try {
+          const response = await axios.get<T>(url);
+          if (!isMounted) return;
           setData(response.data);
           setError(null);
+          break;
+        } catch (err: any) {
+          if (err.response?.status === 429) {
+            attempts++;
+            const delay = attempts * 1000;
+            await new Promise((r) => setTimeout(r, delay));
+          } else {
+            if (isMounted) setError(err);
+            break;
+          }
+        } finally {
+          if (isMounted) setLoading(false);
         }
-      } catch (err: any) {
-        if (isMounted) {
-          setError(err);
-          setData(null);
-        }
-      } finally {
-        if (isMounted) setLoading(false);
       }
     };
 
