@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './CategoriesItem.module.css'
 import { CategoryItem } from '../../types';
 import { useCleanName } from '../../hooks/useCleanName';
 import Button from '../ui/Button';
