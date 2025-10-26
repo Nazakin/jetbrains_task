@@ -6,38 +6,25 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+
+import { DIFFICULTY_COLORS } from "../../consts/index"
 import styles from "./DistributionByDifficulty.module.css";
-
-type DifficultyItem = {
-  name: string;
-  value: number;
-  percentage?: number;
-};
-
-interface DistributionByDifficultyProps {
-  data: DifficultyItem[];
-}
-
-const COLORS = {
-  easy: "#10b981",
-  medium: "#f59e0b",
-  hard: "#ef4444",
-};
+import { DistributionByProps } from "../../types";
 
 const getDifficultyColor = (difficulty: string): string => {
   switch (difficulty.toLowerCase()) {
     case "easy":
-      return COLORS.easy;
+      return DIFFICULTY_COLORS.easy;
     case "medium":
-      return COLORS.medium;
+      return DIFFICULTY_COLORS.medium;
     case "hard":
-      return COLORS.hard;
+      return DIFFICULTY_COLORS.hard;
     default:
       return "#6b7280";
   }
 };
 
-const DistributionByDifficulty: React.FC<DistributionByDifficultyProps> = ({ data }) => {
+const DistributionByDifficulty: React.FC<DistributionByProps> = ({ data }) => {
   if (!data?.length) {
     return <p className={styles.noData}>No data available</p>;
   }

@@ -1,13 +1,13 @@
 import React from 'react';
 import { CategoryItem } from '../../types';
-import { useCleanName } from '../../hooks/useCleanName';
+import { cleanName } from '../../utils/cleanName';
 import Button from '../ui/Button';
 
 
 
 const CategoriesItem: React.FC<CategoryItem> = ({id, name, handleClick, selected}) => {
 
-    const clearName = useCleanName(name);
+    const clearName = cleanName(name);
     return (
         <Button
       variant={`${selected ? "secondary" : "primary"}`}

@@ -10,12 +10,10 @@ import {
   Legend,
 } from "recharts";
 import styles from "./DistributionByType.module.css";
+import { TYPE_COLORS } from "../../consts";
+import { DistributionByProps } from "../../types";
 
-type Props = {
-  data: { name: string; value: number }[];
-};
-
-const DistributionByType: React.FC<Props> = ({ data }) => {
+const DistributionByType: React.FC<DistributionByProps> = ({ data }) => {
   if (!data?.length) {
     return <p className={styles.message}>No type data available.</p>;
   }
@@ -43,7 +41,7 @@ const DistributionByType: React.FC<Props> = ({ data }) => {
               key={d.name}
               dataKey={d.name}
               stackId="a"
-              fill={d.name === "multiple" ? "#4f46e5" : "#10b981"}
+              fill={d.name === "Multiple Answers" ? TYPE_COLORS.multiple : TYPE_COLORS.boolean}
             />
           ))}
         </BarChart>

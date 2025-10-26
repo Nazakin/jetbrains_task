@@ -13,7 +13,7 @@ export type CategoryItem = Category & {
   selected: boolean;
 };
 
-export type ButtonVariant = "primary" | "secondary";
+export type ButtonVariant = "primary" | "secondary" | "skeleton";
 
 type TriviaQuestion = {
   category: string;
@@ -28,3 +28,13 @@ export type TriviaResponse = {
   response_code: number;
   results: TriviaQuestion[];
 };
+
+export type DistributionItem = {
+  name: string;
+  value: number;
+  percentage?: number;
+};
+
+export interface DistributionByProps {
+  data: DistributionItem[];
+}

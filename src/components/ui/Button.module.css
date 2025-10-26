@@ -17,7 +17,6 @@
     line-height: 20px;
     font-weight: 500;
     border-radius: 9999px;
-    max-width: fit-content;
     white-space: nowrap;
     cursor: pointer;
 }
@@ -26,4 +25,27 @@
     background-color: var(--hover-background-color);
     color: var(--hover-text-color);
     border: 1px solid transparent;
+}
+
+.skeleton {
+  background-color: var(--border-color);
+  color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  height: 40px;
+  width: 120px;
+  animation: pulse 1.5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

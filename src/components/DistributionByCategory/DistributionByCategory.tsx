@@ -9,29 +9,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styles from "./DistributionByCategory.module.css";
+import { CATEGORY_COLORS } from "../../consts";
+import { DistributionByProps } from "../../types";
 
-type CategoryItem = {
-  name: string;
-  value: number;
-};
-
-interface DistributionByCategoryProps {
-  data: CategoryItem[];
-}
-
-const COLORS = {
-  bar: "#1f2937",
-};
-
-const DistributionByCategory: React.FC<DistributionByCategoryProps> = ({ data }) => {
+const DistributionByCategory: React.FC<DistributionByProps> = ({ data }) => {
   if (!data?.length) {
     return <p className={styles.noData}>No data available</p>;
   }
 
+  console.log(data)
+
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>Questions by Category</h3>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={350}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis
@@ -39,7 +30,7 @@ const DistributionByCategory: React.FC<DistributionByCategoryProps> = ({ data })
             tick={{ fontSize: 12, fill: "#6b7280" }}
             angle={-45}
             textAnchor="end"
-            height={80}
+            height={125}
           />
           <YAxis tick={{ fontSize: 12, fill: "#6b7280" }} />
           <Tooltip
@@ -51,7 +42,7 @@ const DistributionByCategory: React.FC<DistributionByCategoryProps> = ({ data })
             }}
             cursor={{ fill: "#f3f4f6" }}
           />
-          <Bar dataKey="value" fill={COLORS.bar} radius={[8, 8, 0, 0]} />
+          <Bar dataKey="value" fill={CATEGORY_COLORS.bar} radius={[8, 8, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
