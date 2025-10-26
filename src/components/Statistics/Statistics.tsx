@@ -1,25 +1,19 @@
 import React, { useMemo } from "react";
-import { useFetch } from "../../hooks/useFetch";
 import DistributionByDifficulty from "../DistributionByDifficulty/DistributionByDifficulty";
 import DistributionByCategory from "../DistributionByCategory/DistributionByCategory";
 import DistributionByType from "../DistributionByType/DistributionByType";
 import styles from "./Statistics.module.css";
-import { TriviaResponse } from "../../types";
+import { GroupedData } from "../../types";
 import { cleanName } from "../../utils/cleanName";
 import Skeleton from "../Skeleton/Skeleton";
+import { useFetchQuestions } from "../../api/api";
 
 type Props = {
   categoryId: number;
 };
 
-type GroupedData = { name: string; value: number };
-
 const Statistics: React.FC<Props> = ({ categoryId }) => {
-  const BASE_URL = "https://opentdb.com/api.php?amount=50";
-  const category = categoryId ? `&category=${categoryId}` : "";
-  const { data, error, loading } = useFetch<TriviaResponse>(
-    BASE_URL + category,
-  );
+  const { data, loading, error } = useFetchQuestions(categoryId);
 
   const difficultyData = useMemo<GroupedData[]>(() => {
     if (!data?.results) return [];
@@ -41,7 +35,7 @@ const Statistics: React.FC<Props> = ({ categoryId }) => {
       name: cleanName(name),
       value,
     }));
-  }, [data, categoryId, cleanName]);
+  }, [data, categoryId]);
 
   const typeData = useMemo<GroupedData[]>(() => {
     if (!data?.results) return [];

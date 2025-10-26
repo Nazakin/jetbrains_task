@@ -37,3 +37,5 @@ export type DistributionItem = {
 export interface DistributionByProps {
   data: DistributionItem[];
 }
+
+export type GroupedData = { name: string; value: number };

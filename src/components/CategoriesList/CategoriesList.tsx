@@ -1,19 +1,17 @@
 import React, { useCallback, useEffect, useState } from "react";
 import styles from "./CategoriesList.module.css";
-import { useFetch } from "../../hooks/useFetch";
-import { CategoriesResponse, Category } from "../../types";
+import { Category } from "../../types";
 import CategoriesItem from "../CategoriesItem/CategoriesItem";
 import Button from "../ui/Button";
 import { ALL_CATEGORIES_ID } from "../../consts";
+import { useFetchCategories } from "../../api/api";
 
 type Props = {
   selectCategoryF: (id: number) => void;
 };
 
 const CategoriesList: React.FC<Props> = ({ selectCategoryF }) => {
-  const { data, error, loading } = useFetch<CategoriesResponse>(
-    "https://opentdb.com/api_category.php",
-  );
+  const { data, loading, error } = useFetchCategories();
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] =
@@ -22,7 +20,7 @@ const CategoriesList: React.FC<Props> = ({ selectCategoryF }) => {
   const handleCategoryPick = useCallback((id: number): void => {
     setSelectedCategory(id);
     selectCategoryF(id);
-  }, []);
+  }, [selectCategoryF]);
 
   useEffect(() => {
     if (data?.trivia_categories) {
